@@ -10,6 +10,12 @@ export const writeFileSync = (path: string, data: unknown): void => fs.writeFile
 export const readDirSync = (path: string): string[] => fs.readdirSync(path);
 export const isPathExistsSync = (path: string): boolean => fs.existsSync(path);
 export const getFileSizeInKilobyte = (path: string): number => fs.statSync(path).size / 1000;
+export const appendFileSync = (path: string, data: unknown): void => fs.appendFileSync(path, data);
+export const createDir = (path: string): void => {
+    if (!fs.existsSync(path)) {
+        fs.mkdirSync(path);
+    }
+}
 
 function execRename(command: string, cwd: string) {
     console.log(`Running command ${command}`);
