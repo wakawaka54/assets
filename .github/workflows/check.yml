@@ -17,3 +17,7 @@ jobs:
         run: npm run check
       - name: Aggregate list
         run: npm run aggregate
+      - uses: actions/upload-artifact@v2
+        with:
+          name: build
+          path: build
