@@ -15,8 +15,11 @@ jobs:
           project_id: ${{ secrets.GCP_PROJECT_ID }}
           service_account_key: ${{ secrets.GCP_SA_KEY }}
           export_default_credentials: true
-      - uses: actions/download-artifact@v2
+      - name: Download artifact
+        uses: dawidd6/action-download-artifact@v2
         with:
-          name: build
+          workflow: ${{ github.event.workflow_run.workflow_id }}
+          workflow_conclusion: success
+          artifact_name: build
       - name: Upload Assets
         run: gsutil cp -r build/** ${{ secrets.GCP_ASSET_BUCKET }}
