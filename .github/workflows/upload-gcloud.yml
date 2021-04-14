@@ -20,6 +20,6 @@ jobs:
         with:
           workflow: ${{ github.event.workflow_run.workflow_id }}
           workflow_conclusion: success
-          artifact_name: build
+          name: build
       - name: Upload Assets
         run: gsutil cp -r build/** ${{ secrets.GCP_ASSET_BUCKET }}
